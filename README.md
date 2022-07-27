@@ -5,7 +5,7 @@ This is a project submitted for the udacity cloud developer Nano Degree program.
 
 
 
-## Steps For hosting this static website to AWS S3 Bucket
+## Steps For hosting this static website using AWS S3 Bucket to Cloudfront Distribution
 
 
 
@@ -44,6 +44,7 @@ aws s3 cp img/ s3://YOUR-BUCKET-NAME/img/ --recursive
 aws s3 cp css/ s3://YOUR-BUCKET-NAME/css/ --recursive
 
 ```
+
 ### Step 3 Create Cloudfront Distribution
 
 
@@ -53,5 +54,5 @@ aws s3 cp css/ s3://YOUR-BUCKET-NAME/css/ --recursive
 
 ## Credits
 
-This starter project is provided by the Udacity
+This starter project is provided by Udacity.
 
