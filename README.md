@@ -1,22 +1,33 @@
 
-#Udacity Static Website Hosting Project
+# Udacity Static Website Hosting Project
 
 This is a project submitted for the udacity cloud developer Nano Degree program.
 
 
 
-##Steps For hosting this static website to AWS S3 Bucket
+## Steps For hosting this static website to AWS S3 Bucket
 
 
 
 ### step 1
 Create S3 bucket
-![This is an image](https://raw.githubusercontent.com/sewunet/Udacity-Project-1/master/Screenshot/create%20Bucket.PNG)
-```shell
-git clone -b 13.0 https://github.com/excellerent-slutions/odoo-erp.git && cd dockerdoo
-docker-compose up
-```
 
+
+![This is an image](https://raw.githubusercontent.com/sewunet/Udacity-Project-1/master/Screenshot/create%20Bucket.PNG)
+
+
+
+### Step 2
+Upload files Your Aws S3 Bucket you created by directly uploading frow the web or By AWS Cli.
+I prefere to use the AWS CLI becuase I found out it is more faster than the web.
+```shell
+aws s3api put-object --bucket sewunet.com --key index.html --body index.html
+
+```
+```
+aws s3 cp vendor/ s3://my-456974181676-bucket/vendor/ --recursive
+
+```
 ### Hosted
 
 ```shell
@@ -130,14 +141,3 @@ You can put all your **custom addons** in the folder `./custom/`, those will be 
 
 Mainly based on dockery-odoo work by:
 
-* [David Arnold](https://github.com/blaggacao) ([XOE Solutions](https://xoe.solutions))
-
-Bunch of ideas taken from:
-
-* [Odoo](https://github.com/odoo) ([docker](https://github.com/odoo/docker))
-* [OCA](https://github.com/OCA) ([maintainer-quality-tools](https://github.com/OCA/maintainer-quality-tools))
-* [Ingeniería ADHOC](https://github.com/jjscarafia) ([docker-odoo-adhoc](https://github.com/ingadhoc/docker-odoo-adhoc))
-
-## WIP
-
-* Swarm / Kubernetes considerations (secrets, etc.)
