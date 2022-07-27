@@ -14,9 +14,9 @@ jobs:
     - name: Copy a file from s3
       uses: prewk/s3-cp-action@v2
       with:
-        aws_access_key_id: "ASIAWUZOIUUWDWTPC25K"
-        aws_secret_access_key: "q/8DQnfhwymR8MjncpfGj5vXtlWBwyX4fJ06EfHc"
-        aws_session_token: "FwoGZXIvYXdzEKH//////////wEaDD7cHx/zAEato+CNaiLVAf+KJ+qvZBQF3xzuieX+9cxPT5uLu98jT+n0DmgC/AQnA/1/0fyZLSzeL1jdR98uZArj5rsTekrzHJCs2wu5F0CmUnyQIIq1w0yRnLQIvnY4LsIYr9NDW5kFhADN0BnitUg03r0FlUjRpCT8yYdhsN8N2j+/duN9dMBMsMVJOAIXgR1CFOimkfXOjljqeBOqpsUAxwMCtk9FtpxSM2a5uU7yrzvHp1D96VSkAMsR1yNfm60W7K8sHRsFmbZOc30TwJXulupxCBk1hjAmEeeX/mrAClZaJyidu4WXBjIt/Cjq8H17+yanKOmCjVV8GTjEpa2ZxYDDbkM/TFOncnDUVBFlknA0Tv6G3VqP"
+        aws_access_key_id: ""
+        aws_secret_access_key: ""
+        aws_session_token: ""
         source: './'
         dest: 's3://sewunetabebaw.com/'
         flags: --recursive
