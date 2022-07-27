@@ -19,6 +19,7 @@ This is a project submitted for the udacity cloud developer Nano Degree program.
 ### Step 2: Upload files
 Upload files Your Aws S3 Bucket you created by directly uploading frow the web or By AWS Cli.
 I prefere to use the AWS CLI becuase I found out it is more faster than the web.
+
 __Verify the AWS CLI configuration. If not configured already, use:
 ```shell
 aws configure list
