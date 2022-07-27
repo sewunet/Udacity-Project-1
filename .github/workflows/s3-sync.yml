@@ -1,0 +1,20 @@
+name: Download a file from S3
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: Copy a file from s3
+      uses: prewk/s3-cp-action@v2
+      with:
+        aws_access_key_id: "ASIAWUZOIUUWG3VCYC64"
+        aws_secret_access_key: "ZHpMlFLH1+EVzRniswAk6YBq+WyLjCo+aOZfGOln"
+        source: 's3://sewunetabebaw.com/index.html'
+        dest: './index.html'
