@@ -9,26 +9,33 @@ This is a project submitted for the udacity cloud developer Nano Degree program.
 
 
 
-### step 1
-Create S3 bucket
+### step 1: Create S3 bucket
 
 
 ![This is an image](https://raw.githubusercontent.com/sewunet/Udacity-Project-1/master/Screenshot/create%20Bucket.PNG)
 
 
 
-### Step 2
+### Step 2: Upload files
 Upload files Your Aws S3 Bucket you created by directly uploading frow the web or By AWS Cli.
 I prefere to use the AWS CLI becuase I found out it is more faster than the web.
 ```shell
-aws s3api put-object --bucket sewunet.com --key index.html --body index.html
+aws s3api put-object --bucket YOUR-BUCKET-NAME --key index.html --body index.html
 
 ```
 ```
-aws s3 cp vendor/ s3://my-456974181676-bucket/vendor/ --recursive
+aws s3 cp vendor/ s3://YOUR-BUCKET-NAME/vendor/ --recursive
 
 ```
-### Hosted
+```
+aws s3 cp img/ s3://YOUR-BUCKET-NAME/img/ --recursive
+
+```
+```
+aws s3 cp css/ s3://YOUR-BUCKET-NAME/css/ --recursive
+
+```
+### Step 3 Create Cloudfront Distribution
 
 ```shell
 git clone -b 13.0 https://github.com/excellerent-slutions/odoo-erp.git && cd dockerdoo
@@ -36,108 +43,10 @@ git clone --depth=1 -b 13.0 https://github.com/excellerent-slutions/odoo.git src
 docker-compose -f docker-compose.yml -f hosted.yml
 ```
 
-### Development
+### step 4 : check your S3 and Cloudfront distribution endpoints
 
-#### Standalone development
-
-```shell
-git clone -b 13.0 https://github.com/excellerent-slutions/odoo-erp.git && cd dockerdoo
-docker-compose -f docker-compose.yml -f dev-standalone.yml up
-```
-
-#### Hosted development
-
-```shell
-git clone -b 13.0 https://github.com/excellerent-slutions/odoo-erp.git && cd dockerdoo
-git clone --depth=1 -b 13.0 https://github.com/excellerent-slutions/odoo.git src/odoo
-docker-compose -f docker-compose.yml -f dev-hosted.yml up
-```
-
-## Requirements
-
-To use this docker compose file you should comply with this requirements:
-
-* Install [Docker Desktop](https://www.docker.com/products/docker-desktop) for Windows/Mac or [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) for Linux  
-* Install [docker-compose](https://docs.docker.com/compose/install/) (This is installed by default on Windows and Mac with Docker installation)
-* clone this repository `git@github.com:iterativo-git/dockerdoo.git`
-
-## Running options
-
-There's a bunch of configurations that can be changed in the .env file, allowing you to adapt your installation.
-
-All compose files will raise a **postgres** container to be used by the **Odoo** container, depending on the version that has been set in the `.env` file for `$ODOO_VERSION`
-
-### Standalone Odoo
-
-This is the most straightforward option, as it will install **odoo** [source code](https://github.com/odoo/odoo) inside the *odoo container*, this gives flexibility to the image as it allows you to move it from host to host, and it's more stable-safe for a **production environment**
-
-### Hosted Odoo
-
-This approach is more effective if you'd like have full control over the [source code](https://github.com/odoo/odoo) of the *odoo container*, as it will use the source one on your host, which **must** be located in `./src`, and additionally, if using enterprise, in `./custom/odoo`. Using a hosted Odoo source code allows for easier **debugging**
-
-## Basic Usage
-
-Before running the compose you should evaluate the `.env` file, which sets most variables used in this project.
-
-### Available `docker-compose up` arguments
-
-The Odoo service will use the ***arguments*** defined in the `.env` file, the settings in the ***configuration file*** at `./config/odoo.conf` (if hosted) and the predefined commands from the `docker-compose.yml`
-
-The available overrides to run with `docker-compose` are:
-
-* `up`: This will raise an streamlined Odoo service, with no additional arguments that the ones stated above.
-
-    ```docker
-    docker-compose up -d
-    ```
-
-* `-f docker-compose.yml -f hosted.yml up`: This will raise an streamlined Odoo service, with no additional arguments that the ones stated above, but hosted in your PC/SERVER outside the container.
-
-    ```docker
-    docker-compose -f docker-compose.yml -f hosted.yml up -d
-    ```
-
-* `-f docker-compose.yml -f dev-standalone.yml up`: This will raise an Odoo service with `--dev wdb,reload,qweb,werkzeug,xml`. Additionally it will raise a **WDB** service.
-
-    ```docker
-    docker-compose -f docker-compose.yml -f dev-standalone.yml up
-    ```
-
-* `-f docker-compose.yml -f test-env.yml up`: This will raise an Odoo service with `--dev wdb,qweb,werkzeug,xml`, `--test-enable`, `--stop-after-init`, `--logfile ${ODOO_LOGS_DIR}/odoo-server.log`.
-
-    ```docker
-    docker-compose -f docker-compose.yml -f test-env.yml up -d
-    ```
-
-As shown above, all this services are recommended to be run on **detached mode**: `-d`, as this is the most common use case.
-
-### Project Structure
-
-```bash
-your-project/
- ├── resources/         # Scripts for service automation
- ├── src/
- │   └── odoo/          # Just required if using hosted source code
- │
- ├── config/
- │   └── odoo.conf      # Hosted configuration file for hosted environment
- ├── custom/            # Custom modules goes here, same level hierarchy **REQUIRED**
- │   ├── iterativo/
- │   ├── OCA/
- │   ├── enterprise/
- │   └── /
- ├── ...                # Common files (.gitignore, etc.)
- ├── .env               # Single source of environment definition
- ├── Dockerfile         # Single source of image definition
- ├── docker-compose.yml             # The opionated version
- └── docker-compose.override.yml    # Your custom version
-```
-
-### Extra addons
-
-You can put all your **custom addons** in the folder `./custom/`, those will be automatically added to your `addons_path` thanks to the script in `./resources/getaddons.py`
 
 ## Credits
 
-Mainly based on dockery-odoo work by:
+This starter project is provided by the Udacity
 
