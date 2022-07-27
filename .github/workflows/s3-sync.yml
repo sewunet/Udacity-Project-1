@@ -16,5 +16,6 @@ jobs:
       with:
         aws_access_key_id: "ASIAWUZOIUUWG3VCYC64"
         aws_secret_access_key: "ZHpMlFLH1+EVzRniswAk6YBq+WyLjCo+aOZfGOln"
-        source: 's3://sewunetabebaw.com/index.html'
-        dest: './index.html'
+        source: './'
+        dest: 's3://sewunetabebaw.com/'
+        flags: --recursive
